@@ -1,5 +1,3 @@
-// estados/static/estados/js/scripts.js
-
 $(document).ready(function() {
     $('#estado').change(function() {
         var estadoId = $(this).val();
