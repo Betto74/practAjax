@@ -1,0 +1,32 @@
+<!-- estados/templates/estados/cargar_estados.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estados y Municipios</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'estados/style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'estados/script.js' %}"></script>
+</head>
+<body>
+
+    <h1>Selecciona un estado</h1>
+    
+    <label for="estado">Estado</label>
+    <select id="estado" name="estado">
+        <option value="">Selecciona un estado</option>
+        {% for estado in estados %}
+            <option value="{{ estado.id }}">{{ estado.nombre }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="municipio">Municipio</label>
+    <select id="municipio" name="municipio">
+        <option value="">Selecciona un estado primero</option>
+    </select>
+
+</body>
+</html>

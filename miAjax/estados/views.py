@@ -1,0 +1,20 @@
+# estados/views.py
+
+from django.shortcuts import render
+from django.http import JsonResponse
+from .models import Estado, Municipio
+
+def cargar_estados(request):
+    """
+    Renderiza la página con la lista de estados y el select vacío para municipios.
+    """
+    estados = Estado.objects.all()  # Carga todos los estados
+    return render(request, 'estados/cargar_estados.html', {'estados': estados})
+
+def cargar_municipios(request):
+    """
+    Maneja la solicitud AJAX y retorna los municipios del estado seleccionado.
+    """
+    estado_id = request.GET.get('estado_id')
+    municipios = Municipio.objects.filter(estado_id=estado_id).values('id', 'nombre')
+    return JsonResponse(list(municipios), safe=False)
